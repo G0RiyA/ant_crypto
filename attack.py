@@ -141,8 +141,8 @@ def __scoring(x):
     score = 0
     for i in x:
          i = chr(i).upper()
-         if i in table:
-             score += table[i]
+         if i in __table:
+             score += __table[i]
         
     return score
 
@@ -173,6 +173,6 @@ def __getKey(t):
 
 def CTR_XOR_BREAK(ciphertext_list) -> list:
     key = __getKey(ciphertext_list)
-    return [xor(i^key) for i in ciphertext_list]
+    return [key] + [xor(i,key) for i in ciphertext_list]
 
 
