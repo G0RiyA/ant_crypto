@@ -172,7 +172,7 @@ def __getKey(t):
 
 
 def CTR_XOR_BREAK(ciphertext_list) -> list:
-    key = getKey(ciphertext_list)
+    key = __getKey(ciphertext_list)
     return [xor(i^key) for i in ciphertext_list]
 
 
