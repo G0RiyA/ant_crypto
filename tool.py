@@ -1,11 +1,10 @@
 import math
 
-def xor(x :bytes, y :bytes, repeat :bool=False) -> bytes:
-    if repeat:
-        if len(x) < len(y):
-            x,y = y,x
-        k = math.ceil((len(x) - len(y)) / len(y))
-        y += y*k
+def xor(x :bytes, y :bytes) -> bytes:
+    # if len(x) < len(y):
+    #     x,y = y,x
+    # k = math.ceil((len(x) - len(y)) / len(y))
+    # y += y*k
     return bytes([i^j for i,j in zip(x,y)])
 
 def gcd(a :int, b :int) -> int:
