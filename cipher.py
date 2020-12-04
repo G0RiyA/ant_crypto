@@ -1,5 +1,5 @@
  
-from tool import *
+from .tool import *
 import string
 
 __all__ = ['ROT5','ROT13','ROT18','ROT47','Scytale','RSA','AES']
@@ -15,7 +15,7 @@ def ROT5(plaintext :bytes, count :int = 5) -> bytes:
 def ROT13(plaintext :bytes, count :int = 13) -> bytes:
     count %= 26
     table = string.ascii_lowercase
-    table = table[:count] + table[count:]
+    table = table[count:] + table[:count]
 
     trans = bytes.maketrans((string.ascii_lowercase + string.ascii_uppercase).encode(), (table + table.upper()).encode())
     return plaintext.translate(trans)
