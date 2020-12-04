@@ -1,18 +1,9 @@
 import math
 from functools import reduce
 
-<<<<<<< HEAD
 def xor(*x) -> bytes:
     _xor = lambda x,y: bytes([i^j] for i,j in zip(x,y))
     return reduce(_xor,x)
-=======
-def xor(x :bytes, y :bytes) -> bytes:
-    # if len(x) < len(y):
-    #     x,y = y,x
-    # k = math.ceil((len(x) - len(y)) / len(y))
-    # y += y*k
-    return bytes([i^j for i,j in zip(x,y)])
->>>>>>> b5c5d7fcec8e0857e77d593867129c4a73720488
 
 def gcd(a :int, b :int) -> int:
     while b > 0:
