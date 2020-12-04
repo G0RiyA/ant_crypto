@@ -2,7 +2,7 @@ import math
 from functools import reduce
 
 def xor(*x) -> bytes:
-    _xor = lambda x,y: bytes([i^j] for i,j in zip(x,y))
+    _xor = lambda x,y: bytes([i^j for i,j in zip(x,y)])
     return reduce(_xor,x)
 
 def gcd(a :int, b :int) -> int:
