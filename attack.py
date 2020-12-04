@@ -14,7 +14,7 @@ class ECB_CPA:
 
         self.pt = bytes()
 
-    def run(self,debug:bool=False):
+    def run(self,debug:bool=False) -> bytes:
         while self.end(self.pt):
             random.shuffle(self.table)
             for i in self.table:
@@ -42,7 +42,7 @@ class CBC_OPA:
         self.block_size = block_size
 
 
-    def run(self, iv:bytes,ct:bytes,debug:bool=False):
+    def run(self, iv:bytes,ct:bytes,debug:bool=False) -> bytes:
         pad_list = [self.pad(b'A'*i)[-1] for i in range(self.block_size)]
         
         cts = [ct[i:i+self.block_size] for i in range(0,len(ct),self.block_size)]
@@ -82,7 +82,7 @@ class RSA_LSB_ORACLE_ATTACK:
         self.get = get
         self.oracle = oracle
     
-    def run(self,start:int,init_N:int,pt_enc:int,debug:bool=False):
+    def run(self,start:int,init_N:int,pt_enc:int,debug:bool=False) -> int:
         bits = str(self.oracle(self.get()['ct']))
         i = 1
         while True:

@@ -1,11 +1,9 @@
 import math
+from functools import reduce
 
-def xor(x :bytes, y :bytes) -> bytes:
-    if len(x) < len(y):
-        x,y = y,x
-    k = math.ceil((len(x) - len(y)) / len(y))
-    y += y*k
-    return bytes([i^j for i,j in zip(x,y)])
+def xor(*x) -> bytes:
+    _xor = lambda x,y: bytes([i^j] for i,j in zip(x,y))
+    return reduce(_xor,x)
 
 def gcd(a :int, b :int) -> int:
     while b > 0:
@@ -29,7 +27,7 @@ def num_to_bytes(x :int) -> bytes:
 def bytes_to_num(x :bytes) -> int:
     return int(x.hex(),16)
 
-def chinese_remainder_thorem(a, n) -> int:
+def crt(a, n) -> int:
     N = 1
     for i in n:
         N *= i
